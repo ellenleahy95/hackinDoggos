@@ -74,7 +74,7 @@
         x[i].getElementsByTagName("W")[0].childNodes[0].nodeValue +
         "</button>" +
         "<div class='panel'>" +
-        "<a>Watch Together</a>\n" +
+        "<a href='watching-together.html'>Watch Together</a>\n" +
         "<a href='recPage.html'>Suggest Movie/Show </a>\n" +
         "<a href='main.html'>Delete</a>\n" +
         "</div>"
@@ -113,10 +113,10 @@
       recBoxes += "<div class='column'>" +
                 "<img class='card-img-top' src='"+myImage+"' height='300px' width='500px'>" +
                 "<div class='card-body'>" +
-                "<h5 class='card-title'>" +
+                "<h5 class=“card-title”>" +
                 x[i].getElementsByTagName('SHOW')[0].childNodes[0].nodeValue +
                 "</h5>" +
-                "<button class='btn btn-primary' onclick='clickHandler()'>Recommend</button>" +
+                "<button class=“btn btn-primary”>Recommend</button>" +
                  "</div>" +
                  "</div>"
     }
@@ -127,10 +127,10 @@
       recBoxes += "<div class='column'>" +
                 "<img class='card-img-top' src='"+myImage+"' height='300px' width='500px'>" +
                 "<div class='card-body'>" +
-                "<h5 class='card-title'>" +
+                "<h5 class=“card-title”>" +
                 x[i].getElementsByTagName('SHOW')[0].childNodes[0].nodeValue +
                 "</h5>" +
-                "<button class='btn btn-primary' onclick='clickHandler()'>Recommend</button>" +
+                "<button class=“btn btn-primary”>Recommend</button>" +
                  "</div>" +
                  "</div>"
     }
@@ -158,14 +158,33 @@ function accordionCode() {
 
 }
 
-function clickHandler(){  
-  $.ajax({
-    url:'http://localhost:3000/textme',
-    type:'post',
-    data:{'name' : 'Lewis', 'number': '+447831957200', 'recommendation':'Discovery of Witches'}
-  });
-  alert('Message sent to Lewis!')
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
 }
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+function accordionCode(i) {
+  var acc = document.querySelectorAll("button.accordion");
+  acc[i].classList.toggle("active");
+  acc[i].nextElementSibling.classList.toggle("show");
+
+}
+
+$(document).ready(function() {
+    $("#textbtn").click(function(){
+        console.log("button clicked");
+    });
+
+    $('#numberform').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+        url:'http://localhost:3000/textme',
+        type:'post',
+        data:$('#numberform').serialize(),
+    });
+});
+});
 
 </script>
 <body>

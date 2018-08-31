@@ -9,8 +9,7 @@
     <!-- <script src="accordian.js"></script> -->
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous">
+
 
 
 </head>
@@ -70,28 +69,28 @@
             xhttp.send();
         }
         function myFunction(xml) {
-            var i;
-            var xmlDoc = xml.responseXML;
-            var x = xmlDoc.getElementsByTagName("FRIEND");
-            var table = "";
-            for (i = 0; i < x.length; i++) {
-                var myPic = x[i].getElementsByTagName('PIC')[0].childNodes[0].data;
-                table += "<button class = 'accordion' onclick='accordionCode(" + i + ")'> " +
-                    "<img src='" + myPic + "' id=ava width='20' height='20' /> " +
-                    x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue +
-                    "<br>" +
-                    x[i].getElementsByTagName("W")[0].childNodes[0].nodeValue +
-                    "</button>" +
-                    "<div class='panel'>" +
-                    "<a>Watch Together</a>\n" +
-                    "<a href='recPage.html'>Suggest Movie/Show </a>\n" +
-                    "<a href='main.html'>Delete</a>\n" +
-                    "</div>"
+          var i;
+          var xmlDoc = xml.responseXML;
+          var x = xmlDoc.getElementsByTagName("FRIEND");
+          var table = "";
+          for (i = 0; i < x.length; i++) {
+            var myPic = x[i].getElementsByTagName('PIC')[0].childNodes[0].data;
+            table += "<button class = 'accordion' onclick='accordionCode(" + i + ")'> " +
+              "<img src='"+myPic+"' id=ava width='20' height='20' /> " +
+              x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue +
+              "<br>" +
+              x[i].getElementsByTagName("W")[0].childNodes[0].nodeValue +
+              "</button>" +
+              "<div class='panel'>" +
+              "<a href='watching-together.html'>Watch Together</a>\n" +
+              "<a href='recPage.html'>Suggest Movie/Show </a>\n" +
+              "<a href='main.html'>Delete</a>\n" +
+              "</div>"
 
 
 
-            }
-            document.getElementById("name").innerHTML = table;
+        }
+        document.getElementById("name").innerHTML = table;
 
         }
 
@@ -164,6 +163,19 @@
                     this.nextElementSibling.classList.toggle("show");
                 }
             }
+
+        }
+
+        function w3_open() {
+          document.getElementById("mySidebar").style.display = "block";
+        }
+        function w3_close() {
+          document.getElementById("mySidebar").style.display = "none";
+        }
+        function accordionCode(i) {
+          var acc = document.querySelectorAll("button.accordion");
+          acc[i].classList.toggle("active");
+          acc[i].nextElementSibling.classList.toggle("show");
 
         }
 
