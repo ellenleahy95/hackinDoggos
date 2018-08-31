@@ -110,10 +110,10 @@
       recBoxes += "<div class='column'>" +
                 "<img class='card-img-top' src='"+myImage+"' height='300px' width='500px'>" +
                 "<div class='card-body'>" +
-                "<h5 class=“card-title”>" +
+                "<h5 class='card-title'>" +
                 x[i].getElementsByTagName('SHOW')[0].childNodes[0].nodeValue +
                 "</h5>" +
-                "<button class=“btn btn-primary”>Recommend</button>" +
+                "<button class='btn btn-primary' onclick='clickHandler()'>Recommend</button>" +
                  "</div>" +
                  "</div>"
     }
@@ -124,10 +124,10 @@
       recBoxes += "<div class='column'>" +
                 "<img class='card-img-top' src='"+myImage+"' height='300px' width='500px'>" +
                 "<div class='card-body'>" +
-                "<h5 class=“card-title”>" +
+                "<h5 class='card-title'>" +
                 x[i].getElementsByTagName('SHOW')[0].childNodes[0].nodeValue +
                 "</h5>" +
-                "<button class=“btn btn-primary”>Recommend</button>" +
+                "<button class='btn btn-primary' onclick='clickHandler()'>Recommend</button>" +
                  "</div>" +
                  "</div>"
     }
@@ -155,20 +155,14 @@ function accordionCode() {
 
 }
 
-$(document).ready(function() {
-    $("#textbtn").click(function(){
-        console.log("button clicked");
-    });
-
-    $('#numberform').submit(function(e){
-    e.preventDefault();
-    $.ajax({
-        url:'http://localhost:3000/textme',
-        type:'post',
-        data:$('#numberform').serialize(),
-    });
-});
-});
+function clickHandler(){  
+  console.log("button clicked");
+  $.ajax({
+    url:'http://localhost:3000/textme',
+    type:'post',
+    data:{'name' : 'Lewis', 'number': '+447831957200', 'recommendation':'Discovery of Witches'}
+  });
+}
 
 </script>
 <body>
