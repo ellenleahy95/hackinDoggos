@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,10 +13,10 @@
 <body style="background-image: url(../images/skyEPG.jpg); background-size: 1645px 980px;">
 <!-- <img src="../images/skyEPG.jpg" alt="sky" style="width:100%"> -->
 
-<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
-  <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
-  <div id="name" class="accordion"></div>
-</div>
+  <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+    <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+    <div id="name" class="accordion"></div>
+  </div>
 
 <div class="bg">
   <button class="w3-button w3-medium" onclick="loadAndOpen()"><font color="white">My Friends</font></button>
@@ -25,45 +26,49 @@
   <!-- <button class="w3-button w3-xlarge" onclick="loadAndOpen()">My Friends</button> -->
 </div>
 
-<div>
+<!-- <div>
 	<form id="numberform" action="http://localhost:3000/textme" method="post">
 		Phone Number:<br>
 		<input id="phone number" type="text" name="number" value="Insert Number"><br>
    		<button id="textbtn" type="submit">Text me!</button>
 	</form>
-</div>
+</div> -->
 
-<script type="text/javascript">
+  <script type="text/javascript">
 
-  function loadAndOpen() {
-    w3_open();
-    loadDoc();
-  }
+    function loadAndOpen() {
+      w3_open();
+      loadDoc();
+    }
 
-  function loadDoc() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        myFunction(this);
-      }
-    };
-    xhttp.open("GET", "names.xml", true);
-    xhttp.send();
-  }
-  function myFunction(xml) {
-    var i;
-    var xmlDoc = xml.responseXML;
-    var x = xmlDoc.getElementsByTagName("FRIEND");
-    var table = "";
-    for (i = 0; i < x.length; i++) {
-       table += "<button class = 'accordion' onclick='accordionCode()'> " +
-        x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue +
-        "</button>" +
-        "<div class='panel'>" +
+    function loadDoc() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          myFunction(this);
+        }
+      };
+      xhttp.open("GET", "names.xml", true);
+      xhttp.send();
+    }
+
+    function myFunction(xml) {
+      var i;
+      var xmlDoc = xml.responseXML;
+      var x = xmlDoc.getElementsByTagName("FRIEND");
+      var table = "";
+      for (i = 0; i < x.length; i++) {
+        table += "<button class = 'accordion' onclick='accordionCode(" + i + ")'> " +
+          "<img src=../images/stupid.png id=ava width='20' height='20' /> " +
+          x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue +
+          "</button>" +
+          "<div class='panel'>" +
+
           "<p>Watch together</p>" +
           "<p>Suggest Movie/Show </p>" +
           "<p>Deletee !!! </p>" +
-        "</div>"
+          "</div>"
+
 
       console.log("hi3");
     }
@@ -89,10 +94,31 @@ function accordionCode() {
               this.nextElementSibling.classList.toggle("show");
           }
       }
+      document.getElementById("name").innerHTML = table;
+
+
+    }
+
+
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+    }
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+    }
+    function accordionCode(i) {
+      var acc = document.querySelectorAll("button.accordion");
+      acc[i].classList.toggle("active");
+      acc[i].nextElementSibling.classList.toggle("show");
+
+    }
+  </script>
+
+  <body>
 
 }
 
-$(document).ready(function() {
+<!-- $(document).ready(function() {
     $("#textbtn").click(function(){
         console.log("button clicked");
     });
@@ -105,7 +131,7 @@ $(document).ready(function() {
         data:$('#numberform').serialize(),
     });
 });
-});
+}); -->
 
 </script>
 <body>
