@@ -44,7 +44,9 @@
     var x = xmlDoc.getElementsByTagName("FRIEND");
     var table = "";
     for (i = 0; i < x.length; i++) {
-       table += "<button class = 'accordion' onclick='accordionCode()'> " +
+       table += "<button class = 'accordion' onclick='accordionCode()'>"
+       +"<img src=../images/stupid.png id=ava width='20' height='20' /> " +
+
         x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue +
         "</button>" +
         "<div class='panel'>" +

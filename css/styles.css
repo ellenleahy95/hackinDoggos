@@ -27,3 +27,13 @@ div.panel {
 div.panel.show {
     display: block !important;
 }
+
+div.avatar{
+  style: inline;
+  width: 20;
+  height: 20 px;
+}
+
+.wrap { width: 60px; /* Just a sample value */ }
+.left { width: 20px; float: left; }
+.right { margin-left: 22px; width: 38px;}
