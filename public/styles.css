@@ -27,26 +27,3 @@ div.panel {
 div.panel.show {
     display: block !important;
 }
-
-/* Three image containers (use 25% for four, and 50% for two, etc) */
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 5px;
-}
-
-/* Clear floats after image containers */
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-div.avatar{
-  style: inline;
-  width: 20;
-  height: 20 px;
-}
-
-.wrap { width: 60px; /* Just a sample value */ }
-.left { width: 20px; float: left; }
-.right { margin-left: 22px; width: 38px;}
