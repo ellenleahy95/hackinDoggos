@@ -46,6 +46,11 @@ div.avatar{
   width: 20;
   height: 20 px;
 }
+html, body {
+    margin:0;
+    padding:0;
+}
+
 
 .wrap { width: 60px; /* Just a sample value */ }
 .left { width: 20px; float: left; }

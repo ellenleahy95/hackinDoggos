@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- <script src="accordian.js"></script> -->
 <link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://www.sky.com/assets/toolkit/v2.27.1/toolkit.min.css">
 <script src="https://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
 
 </head>
@@ -19,22 +20,19 @@
   <div id="name" class="accordion"></div>
 </div>
 
-
-
 <div class="bg">
   <button class="w3-button w3-medium" onclick="loadAndOpen()"><font color="black">My Friends</font></button>
   <div>
-    <a href="main.html">Back</a>
-  </div>
-  <center><h1>Recommend to a Friend</h1></center>
+   <a href="main.html">Back</a>
+ </div>
+
   <!-- <div class="w3-container
     <img src="../images/skyEPG.jpg" alt="sky" style="width:100%">
   </div> -->
   <!-- <button class="w3-button w3-xlarge" onclick="loadAndOpen()">My Friends</button> -->
 </div>
-
+<center><h1>Recommend to a Friend</h1></center>
 <div class="card" id="recs"></div>
-
 <!-- <div>
 	<form id="numberform" action="http://localhost:3000/textme" method="post">
 		Phone Number:<br>
@@ -66,25 +64,19 @@
     var x = xmlDoc.getElementsByTagName("FRIEND");
     var table = "";
     for (i = 0; i < x.length; i++) {
-      var myPic = x[i].getElementsByTagName('PIC')[0].childNodes[0].data;
-      table += "<button class = 'accordion' onclick='accordionCode(" + i + ")'> " +
-        "<img src='"+myPic+"' id=ava width='20' height='20' /> " +
+       table += "<button class = 'accordion' onclick='accordionCode()'> " +
         x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue +
-        "<br>" +
-        x[i].getElementsByTagName("W")[0].childNodes[0].nodeValue +
         "</button>" +
         "<div class='panel'>" +
-        "<a>Watch Together</a>\n" +
-        "<a href='recPage.html'>Suggest Movie/Show </a>\n" +
-        "<a href='main.html'>Delete</a>\n" +
+          "<p>Watch together</p>" +
+          "<p>Suggest Movie/Show </p>" +
+          "<p>Deletee !!! </p>" +
         "</div>"
 
-
+    }
+    document.getElementById("name").innerHTML = table;
 
   }
-  document.getElementById("name").innerHTML = table;
-
-}
 
   function loadRecs() {
     loadDocRec("rec.xml");
@@ -110,29 +102,35 @@
     recBoxes += "<div class='row'>"
     for (i = 0; i < 3; i++) {
       var myImage = x[i].getElementsByTagName('IMAGE')[0].childNodes[0].data;
-      recBoxes += "<div class='column'>" +
+      recBoxes +=  "<div class='column'>" +
+                "<article class='c-tile'> <center>" +
                 "<img class='card-img-top' src='"+myImage+"' height='300px' width='500px'>" +
                 "<div class='card-body'>" +
-                "<h5 class='card-title'>" +
+                "<h5 class=“card-title”>" +
                 x[i].getElementsByTagName('SHOW')[0].childNodes[0].nodeValue +
                 "</h5>" +
-                "<button class='btn btn-primary' onclick='clickHandler()'>Recommend</button>" +
+                "<button class=“btn btn-primary”>Recommend</button>" +
                  "</div>" +
+                 "</center></article>" +
                  "</div>"
+
     }
     recBoxes += "</div>";
     recBoxes += "<div class='row'>"
     for (i = 3; i < x.length; i++) {
       var myImage = x[i].getElementsByTagName('IMAGE')[0].childNodes[0].data;
       recBoxes += "<div class='column'>" +
-                "<img class='card-img-top' src='"+myImage+"' height='300px' width='500px'>" +
+                  "<article class='c-tile'> <center>" +
+                "<div class='c-tile__media'><img class='c-tile__poster' src='"+myImage+"' height='300px' width='500px'></div>" +
                 "<div class='card-body'>" +
-                "<h5 class='card-title'>" +
+                "<h5 class=“card-title”>" +
                 x[i].getElementsByTagName('SHOW')[0].childNodes[0].nodeValue +
                 "</h5>" +
-                "<button class='btn btn-primary' onclick='clickHandler()'>Recommend</button>" +
+                "<button class=“btn btn-primary”>Recommend</button>" +
                  "</div>" +
+                 "</center></article>" +
                  "</div>"
+
     }
     recBoxes += "</div>";
     document.getElementById("recs").innerHTML = recBoxes;
@@ -158,14 +156,20 @@ function accordionCode() {
 
 }
 
-function clickHandler(){  
-  $.ajax({
-    url:'http://localhost:3000/textme',
-    type:'post',
-    data:{'name' : 'Lewis', 'number': '+447831957200', 'recommendation':'Discovery of Witches'}
-  });
-  alert('Message sent to Lewis!')
-}
+$(document).ready(function() {
+    $("#textbtn").click(function(){
+        console.log("button clicked");
+    });
+
+    $('#numberform').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+        url:'http://localhost:3000/textme',
+        type:'post',
+        data:$('#numberform').serialize(),
+    });
+});
+});
 
 </script>
 <body>
