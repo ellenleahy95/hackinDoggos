@@ -1,9 +1,9 @@
 
 <Friends_List>
-
+  
     <FRIEND>
-    <NAME>Wafa</NAME>
-  <W>British Bake Off</W>
+        <NAME>Wafa</NAME>
+        <W>British Bake Off</W>
     </FRIEND>
 
     <FRIEND>
@@ -15,11 +15,11 @@
         <NAME>Jonathan</NAME>
         <W>HI</W>
     </FRIEND>
-      <FRIEND>
+    <FRIEND>
         <NAME>Harshil</NAME>
         <W>The Avengers</W>
     </FRIEND>
-      <FRIEND>
+    <FRIEND>
         <NAME>Lewis</NAME>
         <W>Despicable Me</W>
     </FRIEND>
