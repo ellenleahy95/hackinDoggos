@@ -13,43 +13,60 @@
 
 <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
   <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
-
-  <button class="accordion" onclick="accordionCode()">Ellen show</button>
-  <div class="panel">
-    <p>Watch together</p>
-    <p>Suggest Movie/Show </p>
-    <p>Deletee !!! </p>
-
-  </div>
-
-  <button class="accordion">Suggest Movie/show</button>
-  <div class="panel">
-    <p>Watch together</p>
-    <p>Suggest Movie/Show </p>
-    <p>Deletee !!! </p>
-  </div>
-
-  <button class="accordion">Delete !!!!</button>
-  <div class="panel">
-    <p>Watch together</p>
-    <p>Suggest Movie/Show </p>
-    <p>Deletee !!! </p>
-  </div>
+  <div id="name" class="accordion"></div>
 </div>
 
-
-<!-- Page Content -->
 <div class="bg">
-  <button class="w3-button w3-medium" onclick="w3_open()"><font color="white">My Friends</font></button>
+  <button class="w3-button w3-medium" onclick="loadAndOpen()"><font color="white">My Friends</font></button>
   <!-- <div class="w3-container">
     <img src="../images/skyEPG.jpg" alt="sky" style="width:100%">
   </div> -->
+  <!-- <button class="w3-button w3-xlarge" onclick="loadAndOpen()">My Friends</button> -->
 </div>
 
 
+<script type="text/javascript">
 
+  function loadAndOpen() {
+    w3_open();
+    loadDoc();
+  }
+
+  function loadDoc() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        myFunction(this);
+      }
+    };
+    xhttp.open("GET", "names.xml", true);
+    xhttp.send();
+  }
+  function myFunction(xml) {
+    var i;
+    var xmlDoc = xml.responseXML;
+    var x = xmlDoc.getElementsByTagName("FRIEND");
+    var table = "";
+    for (i = 0; i < x.length; i++) {
+       table += "<button class = 'accordion' onclick='accordionCode()'> " +
+        x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue +
+        "</button>" +
+        "<div class='panel'>" +
+          "<p>Watch together</p>" +
+          "<p>Suggest Movie/Show </p>" +
+          "<p>Deletee !!! </p>" +
+        "</div>"
+
+      console.log("hi3");
+    }
+    document.getElementById("name").innerHTML = table;
+
+    console.log("hi4");
+  }
+</script>
 
 <script>
+
 function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
 }
@@ -60,7 +77,6 @@ function accordionCode() {
   var acc = document.getElementsByClassName("accordion");
   var i;
       for (i = 0; i < acc.length; i++) {
-          console.log("Reached here")
           acc[i].onclick = function(){
               this.classList.toggle("active");
               this.nextElementSibling.classList.toggle("show");
