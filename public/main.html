@@ -33,9 +33,7 @@
    		<button id="textbtn" type="submit">Text me!</button>
 	</form>
 </div> -->
-<div>
-	<button id="thronesbutton" type="submit">Text me!</button>
-</div>
+
   <script type="text/javascript">
 
     function loadAndOpen() {
@@ -118,23 +116,6 @@ function accordionCode() {
 
     }
 
-
-
-
-
-	$(document).ready(function() {
-		$("#thronesbutton").click(function(e){
-        	console.log("button clicked");
-        	e.preventDefault();
-        	$.ajax({
-				url:'http://localhost:3000/textme',
-				type:'post',
-				data:{'name' : 'Lewis', 'number': '+447831957200', 'recommendation':'Game of Thrones'}
-			});
-		});
-	});
-
-
 </script>
 <body>
-	</html>
+</html>
