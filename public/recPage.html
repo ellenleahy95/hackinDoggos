@@ -156,12 +156,12 @@ function accordionCode() {
 }
 
 function clickHandler(){  
-  console.log("button clicked");
   $.ajax({
     url:'http://localhost:3000/textme',
     type:'post',
     data:{'name' : 'Lewis', 'number': '+447831957200', 'recommendation':'Discovery of Witches'}
   });
+  alert('Message sent to Lewis!')
 }
 
 </script>
