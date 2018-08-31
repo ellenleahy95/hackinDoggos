@@ -26,7 +26,7 @@
 </div>
 
 <div>
-	<form action="http://localhost:3000/textme" method="post">
+	<form id="numberform" action="http://localhost:3000/textme" method="post">
 		Phone Number:<br>
 		<input id="phone number" type="text" name="number" value="Insert Number"><br>
    		<button id="textbtn" type="submit">Text me!</button> 
@@ -45,8 +45,17 @@ function w3_close() {
 
 $(document).ready(function() {
     $("#textbtn").click(function(){
-        console.log("button");
-    }); 
+        console.log("button clicked");
+    });
+
+    $('#numberform').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+        url:'http://localhost:3000/textme',
+        type:'post',
+        data:$('#numberform').serialize(),
+    });
+});
 });
 
 </script>
