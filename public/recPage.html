@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- <script src="accordian.js"></script> -->
+<link rel="stylesheet" href="../css/styles.css">
+<script src="https://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
+
+</head>
+<body onload="loadRecs()" style="background-color:powderblue">
+
+<!-- <img src="../images/skyEPG.jpg" alt="sky" style="width:100%"> -->
+
+<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+  <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+  <div id="name" class="accordion"></div>
+</div>
+
+<div class="bg">
+  <button class="w3-button w3-medium" onclick="loadAndOpen()"><font color="black">My Friends</font></button>
+  <center><h1>Recommend to a Friend</h1></center>
+  <!-- <div class="w3-container
+    <img src="../images/skyEPG.jpg" alt="sky" style="width:100%">
+  </div> -->
+  <!-- <button class="w3-button w3-xlarge" onclick="loadAndOpen()">My Friends</button> -->
+</div>
+
+<div class="card" id="recs"></div>
+
+<!-- <div>
+	<form id="numberform" action="http://localhost:3000/textme" method="post">
+		Phone Number:<br>
+		<input id="phone number" type="text" name="number" value="Insert Number"><br>
+   		<button id="textbtn" type="submit">Text me!</button>
+	</form>
+</div> -->
+
+<script type="text/javascript">
+
+  function loadAndOpen() {
+    w3_open();
+    loadDoc("names.xml");
+  }
+
+  function loadDoc(myXMLFile) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        myFunction(this);
+      }
+    };
+    xhttp.open("GET", myXMLFile, true);
+    xhttp.send();
+  }
+  function myFunction(xml) {
+    var i;
+    var xmlDoc = xml.responseXML;
+    var x = xmlDoc.getElementsByTagName("FRIEND");
+    var table = "";
+    for (i = 0; i < x.length; i++) {
+       table += "<button class = 'accordion' onclick='accordionCode()'> " +
+        x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue +
+        "</button>" +
+        "<div class='panel'>" +
+          "<p>Watch together</p>" +
+          "<p>Suggest Movie/Show </p>" +
+          "<p>Deletee !!! </p>" +
+        "</div>"
+
+    }
+    document.getElementById("name").innerHTML = table;
+
+  }
+
+  function loadRecs() {
+    loadDocRec("rec.xml");
+  }
+
+  function loadDocRec(myXMLFile) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        getRecs(this);
+      }
+    };
+    xhttp.open("GET", myXMLFile, true);
+    xhttp.send();
+  }
+
+  function getRecs(xml){
+
+    var i;
+    var xmlDoc = xml.responseXML;
+    var x = xmlDoc.getElementsByTagName("REC");
+    var recBoxes = "";
+    recBoxes += "<div class='row'>"
+    for (i = 0; i < 3; i++) {
+      var myImage = x[i].getElementsByTagName('IMAGE')[0].childNodes[0].data;
+      recBoxes += "<div class='column'>" +
+                "<img class='card-img-top' src='"+myImage+"' height='300px' width='500px'>" +
+                "<div class='card-body'>" +
+                "<h5 class=“card-title”>" +
+                x[i].getElementsByTagName('SHOW')[0].childNodes[0].nodeValue +
+                "</h5>" +
+                "<button class=“btn btn-primary”>Recommend</button>" +
+                 "</div>" +
+                 "</div>"
+    }
+    recBoxes += "</div>";
+    recBoxes += "<div class='row'>"
+    for (i = 3; i < x.length; i++) {
+      var myImage = x[i].getElementsByTagName('IMAGE')[0].childNodes[0].data;
+      recBoxes += "<div class='column'>" +
+                "<img class='card-img-top' src='"+myImage+"' height='300px' width='500px'>" +
+                "<div class='card-body'>" +
+                "<h5 class=“card-title”>" +
+                x[i].getElementsByTagName('SHOW')[0].childNodes[0].nodeValue +
+                "</h5>" +
+                "<button class=“btn btn-primary”>Recommend</button>" +
+                 "</div>" +
+                 "</div>"
+    }
+    recBoxes += "</div>";
+    document.getElementById("recs").innerHTML = recBoxes;
+  }
+</script>
+
+<script type="text/javascript">
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+}
+function accordionCode() {
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+      for (i = 0; i < acc.length; i++) {
+          acc[i].onclick = function(){
+              this.classList.toggle("active");
+              this.nextElementSibling.classList.toggle("show");
+          }
+      }
+
+}
+
+$(document).ready(function() {
+    $("#textbtn").click(function(){
+        console.log("button clicked");
+    });
+
+    $('#numberform').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+        url:'http://localhost:3000/textme',
+        type:'post',
+        data:$('#numberform').serialize(),
+    });
+});
+});
+
+</script>
+<body>
+</html>

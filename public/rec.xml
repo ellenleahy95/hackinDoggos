@@ -1,0 +1,33 @@
+
+<Rec_List>
+
+    <REC>
+      <SHOW>Game of Thrones</SHOW>
+      <IMAGE>https://imagesvc.timeincapp.com/v3/fan/image?url=https://winteriscoming.net/files/2017/03/Game-of-Thrones-logo.jpg</IMAGE>
+    </REC>
+
+    <REC>
+        <SHOW>911</SHOW>
+        <IMAGE>https://pmctvline2.files.wordpress.com/2018/03/9-1-1.jpg</IMAGE>
+    </REC>
+
+    <REC>
+        <SHOW>A Discovery of Witches</SHOW>
+        <IMAGE>http://digitalspyuk.cdnds.net/17/47/980x490/landscape-1511356631-a-discovery-of-witches-1.jpg</IMAGE>
+    </REC>
+      <REC>
+        <SHOW>Sharp Objects</SHOW>
+        <IMAGE>https://ksassets.timeincuk.net/wp/uploads/sites/55/2018/08/hbo-sharp-objects-netflix-streaming-920x518.jpeg</IMAGE>
+    </REC>
+
+    <REC>
+        <SHOW>A League of Their Own</SHOW>
+        <IMAGE>https://keyassets-p2.timeincuk.net/wp/prod/wp-content/uploads/sites/42/2017/09/01_01_ALOTO_S12_121964532_219979841-630x400.jpg</IMAGE>
+    </REC>
+
+    <REC>
+      <SHOW>The Simpsons</SHOW>
+      <IMAGE>https://dm8eklel4s62k.cloudfront.net/images/small/sky-1-the-simpsons-tile-b6a4cb6.jpg</IMAGE>
+    </REC>
+
+</Rec_List>
