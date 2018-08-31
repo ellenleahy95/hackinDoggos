@@ -113,7 +113,7 @@
                 "<h5 class='card-title'>" +
                 x[i].getElementsByTagName('SHOW')[0].childNodes[0].nodeValue +
                 "</h5>" +
-                "<button class='btn btn-primary' onclick='clickHandler()'>Recommend</button>" +
+                "<button class='btn btn-primary' onclick='clickHandler(this.id)' id='show"+i+"'>Recommend</button>" +
                  "</div>" +
                  "</div>"
     }
@@ -127,7 +127,7 @@
                 "<h5 class='card-title'>" +
                 x[i].getElementsByTagName('SHOW')[0].childNodes[0].nodeValue +
                 "</h5>" +
-                "<button class='btn btn-primary' onclick='clickHandler()'>Recommend</button>" +
+                "<button class='btn btn-primary' onclick='clickHandler(this.id)' id='show"+i+"'>Recommend</button>" +
                  "</div>" +
                  "</div>"
     }
@@ -155,11 +155,28 @@ function accordionCode() {
 
 }
 
-function clickHandler(){  
+function clickHandler(buttonid){
+  var xmlid = buttonid.slice(4)
+  var xmlint = Number(xmlid)
+  
+  var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        var xmlDoc = this.responseXML;
+        var x = xmlDoc.getElementsByTagName("REC");
+        requestSend(x[xmlint].getElementsByTagName('SHOW')[0].childNodes[0].nodeValue);
+      }
+    };
+  xhttp.open("GET", "rec.xml", true);
+  xhttp.send();
+  //requestSend(show)
+}
+
+function requestSend(show){    
   $.ajax({
     url:'http://localhost:3000/textme',
     type:'post',
-    data:{'name' : 'Lewis', 'number': '+447831957200', 'recommendation':'Discovery of Witches'}
+    data:{'name' : 'Lewis', 'number': '+447831957200', 'recommendation': show}
   });
   alert('Message sent to Lewis!')
 }

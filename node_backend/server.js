@@ -32,7 +32,7 @@ server.listen(3000, () => {
 function textMeRecommendation(name, number, recommendation){
     
     var twilio = require('twilio');
-    var messageBody = `Hi ${name}, Tinashe has recomnmended that you watch ${recommendation}!`;
+    var messageBody = `Hi ${name}, Tinashe has recommended that you watch ${recommendation}!`;
 
     // Find your account sid and auth token in your Twilio account Console.
     var client = new twilio('AC084231ba308475eb8aad413b41a4089c', 'fb7d9d849e57517417894c563ecc6889');
