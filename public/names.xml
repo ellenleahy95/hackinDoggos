@@ -1,27 +1,33 @@
 
 <Friends_List>
-  
+
+
+  <FRIEND>
+      <NAME>Lewis</NAME>
+      <W>Despicable Me</W>
+      <PIC>https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Emoji_u1f4aa.svg/2000px-Emoji_u1f4aa.svg.png</PIC>
+  </FRIEND>
     <FRIEND>
         <NAME>Wafa</NAME>
         <W>British Bake Off</W>
+        <PIC>http://icons.iconarchive.com/icons/google/noto-emoji-smileys/1024/10074-angry-face-icon.png</PIC>
     </FRIEND>
 
     <FRIEND>
         <NAME>Ellen</NAME>
         <W>Game of Thrones</W>
+        <PIC>https://vignette.wikia.nocookie.net/disneyemojiblitz/images/8/84/EmojiBlitzPooh.png</PIC>
     </FRIEND>
 
     <FRIEND>
         <NAME>Jonathan</NAME>
-        <W>HI</W>
+        <W>Love Island</W>
+        <PIC>https://vignette.wikia.nocookie.net/wolduwiki/images/c/c6/Eggplant_Emoji.png</PIC>
     </FRIEND>
     <FRIEND>
         <NAME>Harshil</NAME>
-        <W>The Avengers</W>
-    </FRIEND>
-    <FRIEND>
-        <NAME>Lewis</NAME>
-        <W>Despicable Me</W>
+        <W>Offline</W>
+        <PIC>http://www.pngmart.com/files/1/Sad-Emoji-PNG-Pic.png</PIC>
     </FRIEND>
 
 </Friends_List>

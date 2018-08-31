@@ -66,9 +66,12 @@
     var x = xmlDoc.getElementsByTagName("FRIEND");
     var table = "";
     for (i = 0; i < x.length; i++) {
+      var myPic = x[i].getElementsByTagName('PIC')[0].childNodes[0].data;
       table += "<button class = 'accordion' onclick='accordionCode(" + i + ")'> " +
-        "<img src=../images/stupid.png id=ava width='20' height='20' /> " +
+        "<img src='"+myPic+"' id=ava width='20' height='20' /> " +
         x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue +
+        "<br>" +
+        x[i].getElementsByTagName("W")[0].childNodes[0].nodeValue +
         "</button>" +
         "<div class='panel'>" +
         "<a>Watch Together</a>\n" +
