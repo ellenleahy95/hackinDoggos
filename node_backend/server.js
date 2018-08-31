@@ -12,11 +12,11 @@ app.use(bodyparser.urlencoded({extended:false}))
 app.post('/textme', (req,resp)=>{
     const number = req.body.number
     const name = req.body.name
-    if (req.body.hasOwnProperty('recommendation')){
+    if (JSON.parse(JSON.stringify(req.body)).hasOwnProperty('recommendation')){
       const recommendation = req.body.recommendation
       textMeRecommendation(name, number, recommendation)
       resp.sendStatus(200)
-    }else if (req.body.hasOwnProperty('watchshow')){
+    }else if (JSON.parse(JSON.stringify(req.body)).hasOwnProperty('watchshow')){
       const watchshow = req.body.watchshow
       textMeWatchRequest(name, number, watchshow)
       resp.sendStatus(200)

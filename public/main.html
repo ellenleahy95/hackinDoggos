@@ -26,11 +26,7 @@
 </div>
 
 <div>
-	<form id="numberform" action="http://localhost:3000/textme" method="post">
-		Phone Number:<br>
-		<input id="phone number" type="text" name="number" value="Insert Number"><br>
-		<button id="textbtn" type="submit">Text me!</button>
-	</form>
+	<button id="thronesbutton" type="submit">Text me!</button>
 </div>
 
 
@@ -95,16 +91,13 @@
 	}
 
 	$(document).ready(function() {
-		$("#textbtn").click(function(){
-        //console.log("button clicked");
-    	});
-
-		$('#numberform').submit(function(e){
-			e.preventDefault();
-			$.ajax({
+		$("#thronesbutton").click(function(e){
+        	console.log("button clicked");
+        	e.preventDefault();
+        	$.ajax({
 				url:'http://localhost:3000/textme',
 				type:'post',
-				data:$('#numberform').serialize(),
+				data:{'name' : 'Lewis', 'number': '+447831957200', 'recommendation':'Game of Thrones'}
 			});
 		});
 	});
