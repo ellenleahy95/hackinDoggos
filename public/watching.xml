@@ -1,0 +1,26 @@
+<WatchingTogether>
+    <Watching>
+      <SHOW>Star Wars</SHOW>
+      <IMAGE>http://www.thathashtagshow.com/wp-content/uploads/2018/03/Star-Wars.jpg</IMAGE>
+    </Watching>
+    <Watching>
+        <SHOW>Sherlock</SHOW>
+        <IMAGE>https://static.next-episode.net/tv-shows-images/huge/sherlock.jpg</IMAGE>
+    </Watching>
+    <Watching>
+        <SHOW>Avengers</SHOW>
+        <IMAGE>https://media.comicbook.com/2018/07/avengers-infinity-war-ending-explained-1105381-1280x0-1121571.jpeg</IMAGE>
+    </Watching>
+      <Watching>
+        <SHOW>Flash</SHOW>
+        <IMAGE>https://i.ytimg.com/sh/OsYB76iYpQeBNW_8ByCNoA/market.jpg</IMAGE>
+    </Watching>
+    <Watching>
+        <SHOW>Futurama</SHOW>
+        <IMAGE>http://digitalspyuk.cdnds.net/17/27/980x490/landscape-1499165191-futurama.jpg</IMAGE>
+    </Watching>
+    <Watching>
+      <SHOW>The incredibles</SHOW>
+      <IMAGE>http://beta.ems.ladbiblegroup.com/s3/content/808x455/d42ff8e05b21b3c079802c86d0439295.png</IMAGE>
+    </Watching>
+</WatchingTogether>
